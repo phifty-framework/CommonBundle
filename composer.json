@@ -1,0 +1,14 @@
+{
+    "name": "phifty/commonbundle",
+    "type": "phifty-bundle",
+    "description": "The common bundle",
+    "authors": [
+        {
+            "name": "c9s",
+            "email": "yoanlin93@gmail.com"
+        }
+    ],
+    "require": { "corneltek/installers": "dev-master" },
+    "autoload": { "psr-4":  { "CommonBundle\\": "" } },
+    "extra": { "branch-alias": { "dev-master": "3.1.x-dev" } }
+}

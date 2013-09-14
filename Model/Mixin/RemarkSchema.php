@@ -1,0 +1,16 @@
+<?php
+namespace CommonBundle\Model\Mixin;
+use LazyRecord\Schema\MixinDeclareSchema;
+
+class RemarkSchema extends MixinDeclareSchema
+{
+    public function schema()
+    {
+        $kernel = kernel();
+        $this->column('remark')
+            ->text()
+            ->label( _('備註') )
+            ->renderAs( 'TextareaInput', [ 'rows' => 3, 'cols' => 60 ])
+            ;
+    }
+}
