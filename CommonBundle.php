@@ -1,8 +1,8 @@
 <?php
 namespace CommonBundle;
-use Phifty\Plugin\Plugin;
+use Phifty\Bundle;
 
-class CommonBundle extends Plugin
+class CommonBundle extends Bundle
 {
     public function assets() { return array(); }
 
