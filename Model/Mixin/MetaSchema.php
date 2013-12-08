@@ -12,6 +12,7 @@ class MetaSchema extends MixinSchemaDeclare
             ->timestamp()
             ->null()
             ->renderAs('DateTimeInput')
+            ->default(array('current_timestamp'))
             ->label( _('Created on') )
             ->default(function() {
                 return date('c');
