@@ -11,6 +11,7 @@ class MetaSchema extends MixinSchemaDeclare
         $this->column( 'created_on' )
             ->timestamp()
             ->null()
+            ->isa('DateTime')
             ->renderAs('DateTimeInput')
             // ->default(array('current_timestamp'))
             ->label( _('建立時間') )
@@ -23,6 +24,7 @@ class MetaSchema extends MixinSchemaDeclare
             ->timestamp()
             ->null()
             ->renderAs('DateTimeInput')
+            ->isa('DateTime')
             ->default(function() {
                 return date('c');
             })
