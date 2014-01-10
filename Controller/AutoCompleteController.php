@@ -62,32 +62,36 @@ class AutoCompleteController extends Controller
         return $collection;
     }
 
-    public function indexAction() {
-        $collection = $this->applySearch();
-
+    public function exportCollection($collection) 
+    {
+        $items = [];
         if ( $this->labelField && $this->valueField ) {
-            $items = [];
             foreach ( $collection as $item ) {
                 $items[] = [
                     'label' => $item->get($this->labelField),
                     'value' => $item->get($this->valueField),
                 ];
             }
-            return $this->toJson($items);
         } else if ( $this->labelField ) {
-            $items = [];
             foreach ( $collection as $item ) {
                 $items[] = $item->get($this->labelField);
             }
-            return $this->toJson($items);
         } else if ( $this->valueField ) {
-            $items = [];
             foreach ( $collection as $item ) {
                 $items[] = [
                     'label' => $item->dataLabel(),
                     'value' => $item->get($this->valueField),
                 ];
             }
+        } else {
+            return;
+        }
+        return $items;
+    }
+
+    public function indexAction() {
+        $collection = $this->applySearch();
+        if ( $items = $this->exportCollection($collection) ) {
             return $this->toJson($items);
         }
         return $collection->toJson();
