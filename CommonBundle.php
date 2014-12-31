@@ -28,12 +28,12 @@ class CommonBundle extends Bundle
         // save/add spec data (item)
         // $this->route( '/bs/product/api/save_spec_data', 'SpecDataController:saveSpecData');
 
-        $this->addCRUDAction( 'Category' , array('Create','Update','Delete','BulkDelete') );
-        $this->addCRUDAction( 'Product' , array('BulkDelete') );
-        $this->addCRUDAction( 'ProductType' , array('Create','Update','Delete','BulkDelete') );
-        $this->addCRUDAction( 'Feature' , array('Delete') );
-        $this->addCRUDAction( 'FeatureRel' , array('Create','Update','Delete') );
-        $this->addCRUDAction( 'Resource' , array('Create','Update','Delete') );
+        $this->addRecordAction( 'Category' , array('Create','Update','Delete','BulkDelete') );
+        $this->addRecordAction( 'Product' , array('BulkDelete') );
+        $this->addRecordAction( 'ProductType' , array('Create','Update','Delete','BulkDelete') );
+        $this->addRecordAction( 'Feature' , array('Delete') );
+        $this->addRecordAction( 'FeatureRel' , array('Create','Update','Delete') );
+        $this->addRecordAction( 'Resource' , array('Create','Update','Delete') );
         */
     }
 

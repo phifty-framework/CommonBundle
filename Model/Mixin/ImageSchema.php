@@ -9,11 +9,13 @@ class ImageSchema extends MixinSchemaDeclare
     {
         $this->column( 'thumb' )
             ->varchar(200)
+            ->contentType('ImageFile')
             ->label('縮圖')
             ->renderAs('ThumbImageFileInput');
 
         $this->column( 'image' )
             ->varchar(200)
+            ->contentType('ImageFile')
             ->label('主圖')
             ->renderAs('ThumbImageFileInput');
     }
