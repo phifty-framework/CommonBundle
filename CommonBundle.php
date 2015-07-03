@@ -28,12 +28,20 @@ class CommonBundle extends Bundle
         // save/add spec data (item)
         // $this->route( '/bs/product/api/save_spec_data', 'SpecDataController:saveSpecData');
 
-        $this->addRecordAction( 'Category' , array('Create','Update','Delete','BulkDelete') );
-        $this->addRecordAction( 'Product' , array('BulkDelete') );
-        $this->addRecordAction( 'ProductType' , array('Create','Update','Delete','BulkDelete') );
-        $this->addRecordAction( 'Feature' , array('Delete') );
-        $this->addRecordAction( 'FeatureRel' , array('Create','Update','Delete') );
-        $this->addRecordAction( 'Resource' , array('Create','Update','Delete') );
+        $this->addRecordAction( 'Category' );
+        $this->addRecordAction( 'Product' , array(array('prefix' => 'BulkDelete')) );
+        $this->addRecordAction( 'ProductType' );
+        $this->addRecordAction( 'Feature' , array(array('prefix' => 'Delete')) );
+        $this->addRecordAction( 'FeatureRel' , array(
+            array('prefix' => 'Create'),
+            array('prefix' => 'Update'),
+            array('prefix' => 'Delete')
+        ) );
+        $this->addRecordAction( 'Resource' , array(
+            array('prefix' => 'Create'),
+            array('prefix' => 'Update'),
+            array('prefix' => 'Delete')
+        ) );
         */
     }
 
