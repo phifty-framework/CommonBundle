@@ -1,8 +1,8 @@
 <?php
 namespace CommonBundle\Model\Mixin;
-use LazyRecord\Schema\MixinSchemaDeclare;
+use LazyRecord\Schema\MixinDeclareSchema;
 
-class FakeDeleteSchema extends MixinSchemaDeclare
+class FakeDeleteSchema extends MixinDeclareSchema
 {
     public function schema()
     {

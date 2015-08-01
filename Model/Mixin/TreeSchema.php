@@ -1,9 +1,9 @@
 <?php
 namespace CommonBundle\Model\Mixin;
-use LazyRecord\Schema\MixinSchemaDeclare;
+use LazyRecord\Schema\MixinDeclareSchema;
 
 // XXX: not working
-class TreeSchema extends MixinSchemaDeclare
+class TreeSchema extends MixinDeclareSchema
 {
     public function schema()
     {

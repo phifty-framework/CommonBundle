@@ -1,8 +1,8 @@
 <?php
 namespace CommonBundle\Model\Mixin;
-use LazyRecord\Schema\MixinSchemaDeclare;
+use LazyRecord\Schema\MixinDeclareSchema;
 
-class MetaSchema extends MixinSchemaDeclare
+class MetaSchema extends MixinDeclareSchema
 {
     public function schema()
     {
