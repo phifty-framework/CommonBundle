@@ -1,0 +1,12 @@
+{
+    "name": "corneltek/commonbundle",
+    "description": "The common bundle",
+    "authors": [
+        {
+            "name": "c9s",
+            "email": "yoanlin93@gmail.com"
+        }
+    ],
+    "require": { },
+    "autoload": { "psr-4":  { "CommonBundle\\": "" } }
+}
