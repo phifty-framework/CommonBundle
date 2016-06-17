@@ -8,7 +8,7 @@
             "email": "yoanlin93@gmail.com"
         }
     ],
-    "require": { "composer/installers": "~1.0.0" },
+    "require": { "composer/installers": "dev-master" },
     "autoload": { "psr-4":  { "CommonBundle\\": "" } },
     "extra": { "branch-alias": { "dev-master": "3.1.x-dev" } }
 }
