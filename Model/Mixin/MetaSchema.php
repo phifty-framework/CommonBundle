@@ -31,9 +31,9 @@ class MetaSchema extends MixinDeclareSchema
             ;
 
         $this->column('created_by')
+            ->refer($kernel->currentUser->getModelClass())
             ->integer()
             ->unsigned()
-            ->refer($kernel->currentUser->getModelClass())
             ->default(function() {
                 if (isset($_SESSION)) {
                     return kernel()->currentUser->id;
@@ -45,9 +45,9 @@ class MetaSchema extends MixinDeclareSchema
 
         // XXX: inject value to beforeUpdate
         $this->column('updated_by')
+            ->refer($kernel->currentUser->getModelClass())
             ->integer()
             ->unsigned()
-            ->refer($kernel->currentUser->getModelClass())
             ->default(function() {
                 if ( isset($_SESSION) ) {
                     return kernel()->currentUser->id;
@@ -58,7 +58,14 @@ class MetaSchema extends MixinDeclareSchema
             ;
 
         // XXX: here override the default column value, we should be able to convert the object for formkit widgets.
-        $this->belongsTo('created_by' , $kernel->currentUser->getModelClass() . 'Schema' , 'id' , 'created_by');
-        $this->belongsTo('updated_by' , $kernel->currentUser->getModelClass() . 'Schema' , 'id' , 'updated_by');
+        $this->belongsTo('created_by' , $kernel->currentUser->getModelClass() . 'Schema')
+            ->by('created_by')
+            ->usingIndex(false)
+            ;
+
+        $this->belongsTo('updated_by' , $kernel->currentUser->getModelClass() . 'Schema')
+            ->by('updated_by')
+            ->usingIndex(false)
+            ;
     }
 }
