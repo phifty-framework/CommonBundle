@@ -1,7 +1,7 @@
 <?php
 namespace CommonBundle\Model\Mixin;
 
-use LazyRecord\Schema\MixinDeclareSchema;
+use Maghead\Schema\MixinDeclareSchema;
 
 class HandleSchema extends MixinDeclareSchema
 {

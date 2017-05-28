@@ -1,6 +1,8 @@
 <?php
+
 namespace CommonBundle\Model\Mixin;
-use LazyRecord\Schema\MixinDeclareSchema;
+
+use Maghead\Schema\MixinDeclareSchema;
 use SQLBuilder\Raw;
 
 class MetaSchema extends MixinDeclareSchema

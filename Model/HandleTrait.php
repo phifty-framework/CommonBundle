@@ -3,11 +3,9 @@ namespace CommonBundle\Model;
 
 trait HandleTrait
 {
-    static public function loadByHandle($handle, $lang = NULL) 
+    static public function loadByHandle($handle, $lang = NULL)
     {
-        $record = new static;
-        $record->load($lang ? array( 'handle' => $handle, 'lang' => $lang ) : array( 'handle' => $handle ));
-        return $record;
+        return static::load($lang ? [ 'handle' => $handle, 'lang' => $lang ] : [ 'handle' => $handle ]);
     }
 }
 
