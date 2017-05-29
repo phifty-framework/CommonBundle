@@ -11,6 +11,7 @@ class OrderingSchema extends MixinDeclareSchema
         $this->column('ordering')
             ->integer()
             ->default(0)
+            ->renderAs('HiddenInput')
             ->label('排序編號');
     }
 }
