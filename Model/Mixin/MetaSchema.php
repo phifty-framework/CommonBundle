@@ -3,7 +3,7 @@
 namespace CommonBundle\Model\Mixin;
 
 use Maghead\Schema\MixinDeclareSchema;
-use Maghead\Raw;
+use Magsql\Raw;
 
 class MetaSchema extends MixinDeclareSchema
 {
