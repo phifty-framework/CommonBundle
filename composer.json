@@ -19,6 +19,8 @@
         "corneltek/codegen": "@dev",
         "corneltek/kendo": "@dev",
         "corneltek/pux": "@dev",
+        "corneltek/webui": "@dev",
+        "universal/universal": "@dev",
         "phpsgi/phpsgi": "@dev",
         "phpsgi/funk": "@dev",
         "maghead/maghead": "@dev",
