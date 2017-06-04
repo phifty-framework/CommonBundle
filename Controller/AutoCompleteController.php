@@ -1,6 +1,6 @@
 <?php
 namespace CommonBundle\Controller;
-use Phifty\Controller;
+use Phifty\Routing\Controller;
 
 /**
  * Default AutoCompleteController for jQuery
