@@ -11,17 +11,6 @@ class MetaSchema extends MixinDeclareSchema
     {
         $kernel = kernel();
 
-        $this->column('created_on')
-            ->timestamp()
-            ->isa('DateTime')
-            ->null()
-            ->renderAs('DateTimeInput')
-            ->label( _('建立時間') )
-            ->default(function() {
-                return new \DateTime;
-            })
-            ;
-
         $this->column('updated_on')
             ->timestamp()
             ->null()
@@ -32,17 +21,15 @@ class MetaSchema extends MixinDeclareSchema
             ->label(_('更新時間'))
             ;
 
-        $this->column('created_by')
-            ->refer($kernel->currentUser->getModelClass())
-            ->integer()
-            ->unsigned()
+        $this->column('created_on')
+            ->timestamp()
+            ->isa('DateTime')
+            ->null()
+            ->renderAs('DateTimeInput')
+            ->label( _('建立時間') )
             ->default(function() {
-                if (isset($_SESSION)) {
-                    return kernel()->currentUser->id;
-                }
+                return new \DateTime;
             })
-            ->renderAs('SelectInput')
-            ->label('建立者')
             ;
 
         // XXX: inject value to beforeUpdate
@@ -58,6 +45,20 @@ class MetaSchema extends MixinDeclareSchema
             ->renderAs('SelectInput')
             ->label('更新者')
             ;
+
+        $this->column('created_by')
+            ->refer($kernel->currentUser->getModelClass())
+            ->integer()
+            ->unsigned()
+            ->default(function() {
+                if (isset($_SESSION)) {
+                    return kernel()->currentUser->id;
+                }
+            })
+            ->renderAs('SelectInput')
+            ->label('建立者')
+            ;
+
 
         // XXX: here override the default column value, we should be able to convert the object for formkit widgets.
         $this->belongsTo('created_by' , $kernel->currentUser->getModelClass() . 'Schema')
