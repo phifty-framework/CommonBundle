@@ -23,14 +23,11 @@ class MetaSchema extends MixinDeclareSchema
 
         $this->column('created_on')
             ->timestamp()
-            ->isa('DateTime')
-            ->null()
+            ->default(new Raw('CURRENT_TIMESTAMP'))
             ->label( _('建立時間') )
-            ->default(function() {
-                return new \DateTime;
-            })
             ->renderAs('DateTimeInput')
             ;
+
 
         // XXX: inject value to beforeUpdate
         $this->column('updated_by')
