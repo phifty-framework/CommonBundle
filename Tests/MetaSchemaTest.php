@@ -21,7 +21,7 @@ class MetaSchemaTest extends ModelTestCase
         return [new ItemSchema];
     }
 
-    public function test()
+    public function testCreateWithDefaultDateTime()
     {
         $ret = Item::create([ 'title' => 'works' ]);
         $this->assertResultSuccess($ret);
