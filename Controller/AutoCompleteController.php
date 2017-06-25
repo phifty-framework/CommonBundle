@@ -12,27 +12,31 @@ class AutoCompleteController extends Controller
     public $termField = 'term';
 
     public $labelField;
+
     public $valueField;
 
-    public $searchFields = array(
+    public $searchFields = [
         /*
          'name' => 'contains',
          'code' => 'is',
         */
-    );
+    ];
 
     public $limit = 20;
 
-    public function getCollection() {
+    protected function getCollection()
+    {
         $class = $this->collectionClass;
         return new $class;
     }
 
-    public function getTerm() {
-        return $this->request->param( $this->termField );
+    protected function getTerm()
+    {
+        return $this->request->param($this->termField);
     }
 
-    public function applySearch() {
+    protected function applySearch()
+    {
         $collection = $this->getCollection();
 
         if ($term = $this->getTerm() ) {
@@ -62,22 +66,22 @@ class AutoCompleteController extends Controller
         return $collection;
     }
 
-    public function exportCollection($collection) 
+    protected function exportCollection($collection) 
     {
         $items = [];
-        if ( $this->labelField && $this->valueField ) {
-            foreach ( $collection as $item ) {
+        if ($this->labelField && $this->valueField) {
+            foreach ($collection as $item) {
                 $items[] = [
                     'label' => $item->get($this->labelField),
                     'value' => $item->get($this->valueField),
                 ];
             }
-        } else if ( $this->labelField ) {
-            foreach ( $collection as $item ) {
+        } else if ($this->labelField) {
+            foreach ($collection as $item) {
                 $items[] = $item->get($this->labelField);
             }
-        } else if ( $this->valueField ) {
-            foreach ( $collection as $item ) {
+        } else if ($this->valueField) {
+            foreach ($collection as $item) {
                 $items[] = [
                     'label' => $item->dataLabel(),
                     'value' => $item->get($this->valueField),
@@ -89,11 +93,13 @@ class AutoCompleteController extends Controller
         return $items;
     }
 
-    public function indexAction() {
+    public function indexAction()
+    {
         $collection = $this->applySearch();
-        if ( $items = $this->exportCollection($collection) ) {
+        if ($items = $this->exportCollection($collection)) {
             return $this->toJson($items);
         }
+
         return $collection->toJson();
     }
 }
