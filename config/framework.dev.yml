@@ -26,6 +26,8 @@ ServiceProviders:
       - en
       - zh_TW
   SessionServiceProvider:
+  DatabaseServiceProvider:
+    config: config/database.yml
   TwigServiceProvider:
     TemplateDirs: []
   AssetServiceProvider:
