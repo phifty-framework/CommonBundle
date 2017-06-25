@@ -21,9 +21,23 @@ class MetaSchema extends MixinDeclareSchema
             ->renderAs('DateTimeInput')
             ;
 
+        // for mysql > 5.6
+        /*
         $this->column('created_on')
             ->timestamp()
             ->default(new Raw('CURRENT_TIMESTAMP'))
+            ->label( _('建立時間') )
+            ->renderAs('DateTimeInput')
+            ;
+        */
+
+        // for mysql 5.5
+        $this->column('created_on')
+            ->timestamp()
+            ->notNull()
+            ->default(function() {
+                return new \DateTime;
+            })
             ->label( _('建立時間') )
             ->renderAs('DateTimeInput')
             ;
