@@ -2,6 +2,7 @@
 
 namespace CommonBundle\Model\Mixin;
 
+use CommonBundle\CommonBundle;
 use Maghead\Schema\MixinDeclareSchema;
 use Magsql\Raw;
 
@@ -9,6 +10,7 @@ class MetaSchema extends MixinDeclareSchema
 {
     public function schema()
     {
+        $bundle = CommonBundle::getInstance();
 
         $this->column('updated_on')
             ->timestamp()
@@ -20,26 +22,44 @@ class MetaSchema extends MixinDeclareSchema
             ->renderAs('DateTimeInput')
             ;
 
-        // for mysql > 5.6
-        /*
-        $this->column('created_on')
-            ->timestamp()
-            ->default(new Raw('CURRENT_TIMESTAMP'))
-            ->label( _('建立時間') )
-            ->renderAs('DateTimeInput')
-            ;
-        */
+        $targetVersion = strtolower($bundle->config('Target'));
 
-        // for mysql 5.5
-        $this->column('created_on')
-            ->timestamp()
-            ->notNull()
-            ->default(function() {
-                return new \DateTime;
-            })
-            ->label( _('建立時間') )
-            ->renderAs('DateTimeInput')
-            ;
+        if (preg_match('/^mysql/', $targetVersion)) {
+            if (version_compare($targetVersion, "mysql5.5") <= 0) {
+
+                // For mysql 5.5
+                $this->column('created_on')
+                    ->timestamp()
+                    ->notNull()
+                    ->default(function() { return new \DateTime; })
+                    ->label( _('建立時間') )
+                    ->renderAs('DateTimeInput')
+                    ;
+
+            } else {
+
+                // for mysql > 5.6 and newer
+                $this->column('created_on')
+                    ->timestamp()
+                    ->default(new Raw('CURRENT_TIMESTAMP'))
+                    ->label( _('建立時間') )
+                    ->renderAs('DateTimeInput')
+                    ;
+
+            }
+
+        } else {
+
+            // For postgresql or sqlite
+            $this->column('created_on')
+                ->timestamp()
+                ->default(new Raw('CURRENT_TIMESTAMP'))
+                ->label( _('建立時間') )
+                ->renderAs('DateTimeInput')
+                ;
+
+        }
+
 
 
         // XXX: inject value to beforeUpdate
