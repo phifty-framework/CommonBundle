@@ -10,11 +10,12 @@ class ItemSchema extends DeclareSchema
 {
     public function schema()
     {
+        $this->column('title')->varchar(30);
         $this->mixin(MetaSchema::class);
     }
 }
 
-class MetaSchemaTest extends TestCase
+class MetaSchemaTest extends ModelTestCase
 {
     public function models() {
         return [new ItemSchema];
@@ -22,7 +23,8 @@ class MetaSchemaTest extends TestCase
 
     public function test()
     {
-
+        $ret = Item::create([ 'title' => 'works' ]);
+        $this->assertResultSuccess($ret);
     }
 }
 
