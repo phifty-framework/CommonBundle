@@ -1,24 +1,18 @@
 <?php
 
-namespace CommonBundle\Tests;
+namespace TodoApp\Model;
 
 use CommonBundle\Model\Mixin\MetaSchema;
+use CommonBundle\Model\Mixin\OrderingSchema;
+
 use Phifty\Testing\ModelTestCase;
 use Maghead\Schema\DeclareSchema;
-
-class ItemSchema extends DeclareSchema
-{
-    public function schema()
-    {
-        $this->column('title')->varchar(30);
-        $this->mixin(MetaSchema::class);
-    }
-}
+use UserBundle\Model\UserSchema;
 
 class MetaSchemaTest extends ModelTestCase
 {
     public function models() {
-        return [new ItemSchema];
+        return [new UserSchema, new ItemSchema];
     }
 
     public function testCreateWithDefaultDateTime()

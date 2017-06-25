@@ -12,7 +12,7 @@
 
   <testsuites>
     <testsuite name="CommonBundle">
-      <directory suffix="Test.php">Tests</directory>
+      <directory suffix="Test.php">tests</directory>
       <exclude>bundles</exclude>
       <exclude>frameworks</exclude>
       <exclude>vendor</exclude>

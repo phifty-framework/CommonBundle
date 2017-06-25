@@ -24,8 +24,10 @@
         "phpsgi/phpsgi": "@dev",
         "phpsgi/funk": "@dev",
         "maghead/maghead": "@dev",
-        "maghead/magsql": "@dev"
+        "maghead/magsql": "@dev",
+        "phifty/userbundle": "4.0.x-dev"
     },
     "autoload": { "psr-4":  { "CommonBundle\\": "" } },
+    "autoload-dev": { "psr-4":  { "TodoApp\\": "tests/todoapp/" } },
     "extra": { "branch-alias": { "dev-master": "4.0.x-dev" } }
 }

@@ -37,4 +37,5 @@ ServiceProviders:
     Paths:
       - bundles
 Bundles:
+  UserBundle:
   CommonBundle:
