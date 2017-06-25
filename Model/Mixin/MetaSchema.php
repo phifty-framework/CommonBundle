@@ -9,7 +9,6 @@ class MetaSchema extends MixinDeclareSchema
 {
     public function schema()
     {
-        $kernel = kernel();
 
         $this->column('updated_on')
             ->timestamp()
@@ -44,6 +43,7 @@ class MetaSchema extends MixinDeclareSchema
 
 
         // XXX: inject value to beforeUpdate
+        $kernel = kernel();
         $this->column('updated_by')
             ->refer($kernel->currentUser->getModelClass())
             ->integer()
