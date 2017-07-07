@@ -14,7 +14,7 @@ class MetaSchema extends MixinDeclareSchema
 
         $this->column('updated_on')
             ->timestamp()
-            ->null()
+            ->notNull()
             ->isa('DateTime')
             ->default(new Raw('CURRENT_TIMESTAMP'))
             ->onUpdate(new Raw('CURRENT_TIMESTAMP'))
@@ -30,7 +30,7 @@ class MetaSchema extends MixinDeclareSchema
                 // For mysql 5.5
                 $this->column('created_on')
                     ->timestamp()
-                    ->notNull()
+                    ->null()
                     ->default(function() { return new \DateTime; })
                     ->label( _('建立時間') )
                     ->renderAs('DateTimeInput')
@@ -41,6 +41,7 @@ class MetaSchema extends MixinDeclareSchema
                 // for mysql > 5.6 and newer
                 $this->column('created_on')
                     ->timestamp()
+                    ->null()
                     ->default(new Raw('CURRENT_TIMESTAMP'))
                     ->label( _('建立時間') )
                     ->renderAs('DateTimeInput')
@@ -53,6 +54,7 @@ class MetaSchema extends MixinDeclareSchema
             // For postgresql or sqlite
             $this->column('created_on')
                 ->timestamp()
+                ->null()
                 ->default(new Raw('CURRENT_TIMESTAMP'))
                 ->label( _('建立時間') )
                 ->renderAs('DateTimeInput')
