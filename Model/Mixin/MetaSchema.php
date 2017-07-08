@@ -14,7 +14,7 @@ class MetaSchema extends MixinDeclareSchema
 
         $this->column('updated_on')
             ->timestamp()
-            ->notNull()
+            ->null()
             ->isa('DateTime')
             ->default(new Raw('CURRENT_TIMESTAMP'))
             ->onUpdate(new Raw('CURRENT_TIMESTAMP'))
